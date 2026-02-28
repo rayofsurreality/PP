@@ -1,39 +1,79 @@
-/* Navigation Bar */
+/* -------------------------
+   Base Layout
+-------------------------- */
+
+body {
+    margin: 0;
+    background: linear-gradient(to bottom, #f6f1e8, #efe7da);
+    font-family: 'Cormorant Garamond', serif;
+    color: #5c4b3a;
+}
+
+/* -------------------------
+   Navigation Bar
+-------------------------- */
+
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
+    padding: 22px 50px;
+    box-sizing: border-box;
+
     display: flex;
     justify-content: space-between;
-    padding: 20px 40px;
-    box-sizing: border-box;
+    align-items: center;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
 }
 
-.nav-link, .nav-title {
-    font-weight: bold;
+.nav-link {
     text-decoration: none;
-    color: #4a4a4a;
+    color: #6e5843;
+    font-weight: 400;
 }
 
-/* Postcard Flip Mechanics */
+.nav-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+/* -------------------------
+   Workspace
+-------------------------- */
+
 .workspace {
-    perspective: 1000px;
+    min-height: 100vh;
+    padding-top: 120px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    perspective: 1200px;
 }
 
+/* -------------------------
+   Postcard Container
+-------------------------- */
+
 .card-container {
-    width: 600px;
-    height: 350px;
-    cursor: pointer;
+    width: 720px;
+    height: 480px;
 }
+
+/* -------------------------
+   Card Mechanics
+-------------------------- */
 
 .card {
     width: 100%;
     height: 100%;
     position: relative;
-    transition: transform 0.6s;
+
+    transition: transform 0.9s cubic-bezier(.4,.2,.2,1);
     transform-style: preserve-3d;
 }
 
@@ -41,82 +81,150 @@
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+/* Shared Face Styling */
+
+.card-face {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
-    background: #fffef0; /* Slightly different off-white for the card */
-    border: 1px solid #d3d3b2;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-    padding: 20px;
+    padding: 40px;
     box-sizing: border-box;
+
+    backface-visibility: hidden;
+
+    background: #fffdf7;
+    border: 1px solid #e4dacb;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.12),
+        0 2px 8px rgba(0,0,0,0.05);
+
+    border-radius: 2px;
+}
+
+/* Slight natural tilt for realism */
+.card-front {
+    transform: rotate(-0.5deg);
 }
 
 .card-back {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) rotate(0.5deg);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
-/* Post-it styling (Top Right) */
+/* -------------------------
+   Post-it
+-------------------------- */
+
 .post-it {
     position: absolute;
-    top: -10px;
-    right: 20px;
-    background: #fff475;
-    padding: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    top: -18px;
+    right: 40px;
+
+    background: #fff6a8;
+    padding: 14px 18px;
+
+    font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
-    transform: rotate(2deg);
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+
+    transform: rotate(3deg);
 }
 
-/* Card Content Layout (Picture on left, Content on rest) */
-.card-content-layout {
+/* -------------------------
+   Card Layout
+-------------------------- */
+
+.card-layout {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     height: 100%;
-    margin-top: 20px;
 }
+
+/* Picture Area */
 
 .picture-zone {
     flex: 1;
-    border: 2px dashed #ccc;
+
+    border: 1px dashed #d6cbbc;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #9a8876;
+
+    transition: background 0.3s ease;
 }
 
+.picture-zone:hover {
+    background: rgba(0,0,0,0.02);
+}
+
+/* Text Area */
+
 .text-zone {
-    flex: 2;
+    flex: 1.5;
+    display: flex;
 }
 
 textarea {
     width: 100%;
-    height: 80%;
+    height: 100%;
+
     background: transparent;
     border: none;
     resize: none;
-    font-family: inherit;
-    font-size: 1.1rem;
-    border-bottom: 1px solid #eee;
+    outline: none;
+
+    font-size: 1.2rem;
+    line-height: 1.7;
+
+    color: #4e4032;
 }
 
-/* Buttons */
+/* Back Textarea */
+
+.back-textarea {
+    font-size: 1rem;
+    border-bottom: 1px solid #e2d7c7;
+}
+
+/* -------------------------
+   Controls
+-------------------------- */
+
 .controls {
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
-.action-btn, .submit-btn {
-    padding: 10px 20px;
+.action-btn,
+.submit-btn,
+.publish-btn {
+    padding: 12px 28px;
+
+    background: #fffaf3;
+    border: 1px solid #d8cfc2;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+
     cursor: pointer;
-    background: #8b4513;
-    color: white;
-    border: none;
-    border-radius: 4px;
+
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+}
+
+.action-btn:hover,
+.submit-btn:hover,
+.publish-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
