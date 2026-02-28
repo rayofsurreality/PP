@@ -3,58 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create - Postcard Gallery</title>
+    <title>Create — Postcard Desk</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Top Bar -->
     <nav class="navbar">
-        <a href="index.html" class="nav-link">HOME</a>
-        <span class="nav-title">POSTCARD GALLERY</span>
+        <a href="index.html" class="nav-link">Home</a>
+        <span class="nav-title">Postcard Desk</span>
         <button class="publish-btn">Publish</button>
     </nav>
 
-    <div class="workspace">
+    <!-- Workspace -->
+    <main class="workspace">
+
         <div class="card-container">
             <div class="card" id="postcard">
-                
-                <div class="card-front">
-                    <div class="post-it">Post-it</div> <div class="card-content-layout">
+
+                <!-- Front of Postcard -->
+                <div class="card-face card-front">
+
+                    <div class="post-it">
+                        <span>Note</span>
+                    </div>
+
+                    <div class="card-layout">
+
                         <div class="picture-zone">
                             <label for="img-upload" class="upload-label">
-                                <span>PICTURE</span>
-                                <small>Upload</small>
+                                <span>Add Image</span>
                             </label>
                             <input type="file" id="img-upload" accept="image/*" hidden>
                         </div>
+
                         <div class="text-zone">
-                            <textarea placeholder="Write your content here..."></textarea>
+                            <textarea placeholder="Write your postcard..."></textarea>
                         </div>
+
                     </div>
+
                 </div>
 
-                <div class="card-back">
-                    <h3>Theme Selection</h3>
-                    <div class="theme-options">
-                        <button class="theme-btn">Classic</button>
-                        <button class="theme-btn">Vintage</button>
-                        <button class="theme-btn">Modern</button>
+                <!-- Back of Postcard -->
+                <div class="card-face card-back">
+
+                    <div class="back-content">
+                        <p class="back-instruction">
+                            Turn the card and leave a small note.
+                        </p>
+
+                        <textarea class="back-textarea" placeholder="A message, a date, a signature…"></textarea>
+
                     </div>
+
                 </div>
 
             </div>
         </div>
 
+        <!-- Controls -->
         <div class="controls">
-            <button class="action-btn" onclick="flipCard()">Flip Over</button>
-            <button class="submit-btn">SUBMIT</button>
+            <button class="action-btn" onclick="flipCard()">Flip</button>
+            <button class="submit-btn">Save</button>
         </div>
-    </div>
+
+    </main>
 
     <script>
         function flipCard() {
             document.getElementById('postcard').classList.toggle('is-flipped');
         }
     </script>
+
 </body>
 </html>
