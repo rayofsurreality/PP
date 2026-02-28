@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postcard Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>POSTCARD GALLERY</h1>
+        <p>Welcome to Postcard Gallery</p>
+        
+        <div class="tagline">
+            You can <span id="dynamic-word">write</span> postcards.
+        </div>
+
+        <a href="create.html" class="cta-button">Let's go</a>
+    </div>
+
+    <script>
+        const words = ["write", "share", "explore", "collect"];
+        let currentIndex = 0;
+        const dynamicWordElement = document.getElementById("dynamic-word");
+
+        function rotateWord() {
+            dynamicWordElement.style.opacity = 0;
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % words.length;
+                dynamicWordElement.textContent = words[currentIndex];
+                dynamicWordElement.style.opacity = 1;
+            }, 500);
+        }
+        dynamicWordElement.style.transition = "opacity 0.5s ease";
+        setInterval(rotateWord, 3000);
+    </script>
+</body>
+</html>
