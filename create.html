@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create - Postcard Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-link">HOME</a>
+        <span class="nav-title">POSTCARD GALLERY</span>
+        <button class="publish-btn">Publish</button>
+    </nav>
+
+    <div class="workspace">
+        <div class="card-container">
+            <div class="card" id="postcard">
+                
+                <div class="card-front">
+                    <div class="post-it">Post-it</div> <div class="card-content-layout">
+                        <div class="picture-zone">
+                            <label for="img-upload" class="upload-label">
+                                <span>PICTURE</span>
+                                <small>Upload</small>
+                            </label>
+                            <input type="file" id="img-upload" accept="image/*" hidden>
+                        </div>
+                        <div class="text-zone">
+                            <textarea placeholder="Write your content here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-back">
+                    <h3>Theme Selection</h3>
+                    <div class="theme-options">
+                        <button class="theme-btn">Classic</button>
+                        <button class="theme-btn">Vintage</button>
+                        <button class="theme-btn">Modern</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="action-btn" onclick="flipCard()">Flip Over</button>
+            <button class="submit-btn">SUBMIT</button>
+        </div>
+    </div>
+
+    <script>
+        function flipCard() {
+            document.getElementById('postcard').classList.toggle('is-flipped');
+        }
+    </script>
+</body>
+</html>
