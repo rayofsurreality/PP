@@ -3,37 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postcard Gallery</title>
+    <title>Postcard Desk</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>POSTCARD GALLERY</h1>
-        <p>Welcome to Postcard Gallery</p>
+    <main class="container">
         
-        <div class="tagline">
-            You can <span id="dynamic-word">write</span> postcards.
-        </div>
+        <h1 class="site-title">Postcard Desk</h1>
 
-        <a href="create.html" class="cta-button">Let's go</a>
-    </div>
+        <p class="intro">
+            A quiet place for correspondence.
+        </p>
+
+        <p class="tagline">
+            You can <span id="dynamic-word">write</span> a postcard here.
+        </p>
+
+        <a href="create.html" class="cta-button">Begin</a>
+
+    </main>
 
     <script>
-        const words = ["write", "share", "explore", "collect"];
+        const words = ["write", "share", "keep", "send"];
         let currentIndex = 0;
         const dynamicWordElement = document.getElementById("dynamic-word");
 
         function rotateWord() {
             dynamicWordElement.style.opacity = 0;
+
             setTimeout(() => {
                 currentIndex = (currentIndex + 1) % words.length;
                 dynamicWordElement.textContent = words[currentIndex];
                 dynamicWordElement.style.opacity = 1;
-            }, 500);
+            }, 400);
         }
-        dynamicWordElement.style.transition = "opacity 0.5s ease";
+
+        dynamicWordElement.style.transition = "opacity 0.4s ease";
         setInterval(rotateWord, 3000);
     </script>
+
 </body>
 </html>
